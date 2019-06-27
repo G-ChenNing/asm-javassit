@@ -1,10 +1,8 @@
 package com.example.demo.asm.second;
 
+import com.example.demo.asm.third.asm3.Adapter;
 import org.apache.commons.lang3.StringUtils;
-import org.objectweb.asm.ClassWriter;
-import org.objectweb.asm.MethodVisitor;
-import org.objectweb.asm.Opcodes;
-import org.objectweb.asm.Type;
+import org.objectweb.asm.*;
 
 import java.util.List;
 
@@ -16,7 +14,7 @@ public class SimpleJbeanAsm extends SimpleJbean implements Opcodes {
     @Override
     public byte[] createBeanClass(String className, List<FieldInfo> fields) {
         ClassWriter cw = new ClassWriter(0);
-
+//        ClassVisitor delLoginClassAdaptor = new Adapter.DelLoginClassAdapter(cw);
         cw.visit(V1_1, ACC_PUBLIC, className, null, "java/lang/Object", null);
 
         // creates a MethodWriter for the (implicit) constructor
@@ -30,6 +28,8 @@ public class SimpleJbeanAsm extends SimpleJbean implements Opcodes {
         for (FieldInfo f : fields) {
             addMethod(cw, mv, className, f);
         }
+
+
 
         return cw.toByteArray();
     }

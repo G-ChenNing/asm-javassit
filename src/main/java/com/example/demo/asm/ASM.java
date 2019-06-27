@@ -22,6 +22,7 @@ public class ASM {
 
         classWriter.visitField(ACC_PRIVATE+ ACC_STATIC, "wcn", "Ljava/lang/String;", null, "wcn").visitEnd();
         classWriter.visitField(ACC_PRIVATE, "cl", "Ljava/lang/String;", null, "cl").visitEnd();
+        classWriter.visitField(ACC_PRIVATE, "aa", "Ljava/lang/String;", null, "cl").visitEnd();
 
         //创建构造函数
         MethodVisitor mv = classWriter.visitMethod(Opcodes.ACC_PUBLIC, "<init>", "()V", null, null);
@@ -41,12 +42,19 @@ public class ASM {
         mv2.visitFieldInsn(Opcodes.PUTFIELD, "Programmer", "wcn", "Ljava/lang/String;");
 
         mv2.visitVarInsn(Opcodes.ALOAD, 0);
-        mv2.visitVarInsn(Opcodes.ALOAD, 1);
+        mv2.visitVarInsn(Opcodes.ALOAD, 2);
 //        mv2.visitVarInsn(Opcodes.ALOAD, 3);
         mv2.visitFieldInsn(Opcodes.PUTFIELD, "Programmer", "cl", "Ljava/lang/String;");
 //        mv2.visitFieldInsn(Opcodes.PUTFIELD, "Programmer", "cl", "Ljava/lang/String;");
 //        mv2.visitMethodInsn(Opcodes.INVOKESPECIAL, "java/lang/Object", "<init>","(Ljava/lang/String;Ljava/lang/String;)V",false);
 //        mv2.visitFieldInsn(Opcodes.PUTFIELD, "Programmer", "cl", "Ljava/lang/String;");
+
+
+
+
+        
+
+
         mv2.visitInsn(Opcodes.RETURN);
         mv2.visitMaxs(5, 5);
         mv2.visitEnd();

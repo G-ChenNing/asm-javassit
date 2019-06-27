@@ -11,11 +11,13 @@ import com.example.demo.asm.second.FieldInfo;
 import com.example.demo.asm.second.SimpleJbean;
 import com.example.demo.asm.second.SimpleJbeanAsm;
 import com.example.demo.asm.second.TestFieldInfo;
+import com.example.demo.asm.third.asm3.Adapter;
 import com.example.demo.javassist.second.SimpleJbeanJs;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Before;
 import org.junit.Test;
 import org.objectweb.asm.ClassReader;
+import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.ClassWriter;
 
 import static org.assertj.core.api.Java6Assertions.fail;
@@ -93,6 +95,7 @@ public class SimpleJbeanTest extends ClassLoader {
             Object result = getMethod.invoke(user, new Object[] {});
             assertEquals(tempField.value, result);
         }
+
         File file = new File("D://User.class");
 
         FileOutputStream fout = new FileOutputStream(file);
