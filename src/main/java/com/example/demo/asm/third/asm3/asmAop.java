@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+
 public class asmAop extends ClassLoader {
     static class AddSecurityCheckClassAdapter extends ClassVisitor {
 
@@ -68,6 +69,7 @@ public class asmAop extends ClassLoader {
 //            Label l4 = new
 //                    Label();
 //
+            
 //            mv.visitLabel(l4);
 //
 //            mv.visitLocalVariable("this", "Lorg/more/test/asm/TestBean;", null, l0, l4, 0);
